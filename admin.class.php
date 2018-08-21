@@ -19,11 +19,29 @@ class admin
                 <td>'.$r['file'].'</td>
                 <td>'.$r['submittime'].'</td>
                 <td>';
-            if(isset($r['status']) & !empty($r['status'])){ $html .= $r['status'];}else{$html .= "NA";}
+                if(isset($r['status']) & !empty($r['status'])){ $html .= $r['status'];}else{$html .= "NA";}
+
+                switch ($r['status']) {
+                    case 'draft':
+                        $show_btn = '<a href="/status/publishcomment.php?id='.$r['id'].'">Publish</a>
+                                     <a href="/status/rejectcomment.php?id='.$r['id'].'">Reject</a>
+                                     <a href="/status/delcomment.php?id='.$r['id'].'">Del</a>';
+                        break;
+                    case 'rejected':
+                        $show_btn = '<a href="/status/publishcomment.php?id='.$r['id'].'">Publish</a>
+                                     <a href="/status/draftcomment.php?id='.$r['id'].'">Draft</a>
+                                     <a href="/status/delcomment.php?id='.$r['id'].'">Del</a>';
+                        break;
+                    case 'published':
+                        $show_btn = '<a href="/status/rejectcomment.php?id='.$r['id'].'">Reject</a>
+                                     <a href="/status/draftcomment.php?id='.$r['id'].'">Draft</a>
+                                     <a href="/status/delcomment.php?id='.$r['id'].'">Del</a>';
+                        break;
+                }
+
             $html .='</td> 
                 <td>
-                    <a href="/editcomment.php?id='.$r['id'].'">Edit</a>
-                    <a href="/delcomment.php?id='.$r['id'].'">Del</a>
+                   '.$show_btn.'
                 </td>
             </tr>';
          }

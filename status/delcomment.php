@@ -1,5 +1,5 @@
 <?php
-require_once 'db.class.php';
+require_once '../db.class.php';
 
 if(isset($_GET['id']) & !empty($_GET['id'])){
     $connect = new db();
