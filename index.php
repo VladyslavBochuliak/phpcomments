@@ -35,10 +35,10 @@
             <div class="widget-area no-padding blank">
                 <div class="status-upload">
                     <form method="post" action="/ajax/add_comment.php" class="send" enctype="multipart/form-data">
-                    	<input type="email" name="email" required="required" placeholder="email">
-                    	<input type="text" name="name" placeholder="Name">
+                    	<input type="email" name="email" required="required" placeholder="E-mail*">
+                    	<input type="text" name="name" pattern="[a-zA-Z]+" placeholder="Name">
                     	<input type="file" name="fileToUpload" id="fileToUpload" accept="image/png,image/jpg">
-                        <textarea name="subject" placeholder="What are you doing right now?" ></textarea>
+                        <textarea name="subject" placeholder="What are you doing right now?*" required="required" ></textarea>
                         <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Submit</button>
                     </form>
                 </div><!-- Status Upload  -->
